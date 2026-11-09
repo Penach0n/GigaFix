@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es-AR" style="scroll-behavior: smooth;">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GigaFix | Soporte Técnico de PC, Notebooks & Cyber Tuning</title>
+<meta name="description" content="Reparación, mantenimiento y Cyber Tuning de PC y notebooks a domicilio. Optimizá tu setup y jugá sin tirones.">
+<style>
+  /* CONFIGURACIÓN DE VARIABLES CYBERPUNK - ULTRA LIVIANO (0kB DEPENDENCIAS) */
+  :root {
+    --bg: #0D0D11;
+    --card: #16161F;
+    --violet: #9D00FF;
+    --green: #39FF14;
+    --text-muted: #A1A1AA;
+    --mist: #27273A;
+    --white: #FFFFFF;
+  }
+
+  /* RESET GENERAL OPTIMIZADO PARA BAJO CONSUMO */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { 
+    background-color: var(--bg); 
+    color: var(--white); 
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+    -webkit-font-smoothing: antialiased; 
+    line-height: 1.5;
+  }
+
+  /* UTILITIES & GRID COMPATIBLES SIN TAILWIND */
+  .max-w-6xl { max-width: 1152px; margin: 0 auto; padding: 0 1.25rem; }
+  .pads { 
+    background-color: var(--bg); 
+    background-image: radial-gradient(circle at 1px 1px, rgba(157, 0, 255, 0.12) 1.5px, transparent 0); 
+    background-size: 28px 28px; 
+  }
+  
+  /* HEADER & NAV */
+  header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem 0; }
+  .logo-img { height: 3rem; width: auto; object-fit: contain; }
+  nav { display: none; gap: 1.75rem; font-size: 0.875rem; font-weight: 500; }
+  @media (min-width: 768px) { nav { display: flex; } }
+  nav a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+  nav a:hover { color: var(--green); }
+  
+  /* BOTONES NEÓN CON SOMBRAS ACELERADAS POR HARDWARE */
+  .btn-violet { 
+    background-color: var(--violet); 
+    color: var(--white); 
+    padding: 0.5rem 1rem; 
+    font-size: 0.875rem; 
+    font-weight: 600; 
+    border-radius: 0.375rem; 
+    text-decoration: none; 
+    border: 1px solid var(--violet); 
+    box-shadow: 0 0 15px rgba(157,0,255,0.4); 
+    transition: background 0.2s; 
+  }
+  .btn-violet:hover { background-color: rgba(157,0,255,0.8); }
+  
+  /* HERO SECTION */
+  .hero-grid { display: grid; gap: 2.5rem; padding: 2rem 0 4rem 0; }
+  @media (min-width: 1024px) { .hero-grid { grid-template-cols: 1.1fr 1fr; align-items: center; } }
+  .hero-title { font-size: 2.5rem; font-weight: 800; line-height: 1.05; tracking-tight: -0.05em; }
+  @media (min-width: 640px) { .hero-title { font-size: 3.75rem; } }
+  .text-green { color: var(--green); }
+  .hero-desc { margin-top: 1.25rem; font-size: 1.125rem; color: var(--text-muted); line-height: 1.6; max-width: 65ch; }
+  .hero-buttons { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  
+  .btn-green { 
+    background-color: var(--green); 
+    color: #000000; 
+    padding: 0.75rem 1.5rem; 
+    font-weight: 700; 
+    border-radius: 0.375rem; 
+    text-decoration: none; 
+    box-shadow: 0 0 20px rgba(57,255,20,0.4); 
+    transition: transform 0.2s; 
+  }
+  .btn-green:hover { transform: scale(1.05); }
+  .btn-outline { 
+    border: 1px solid var(--violet); 
+    color: var(--white); 
+    padding: 0.75rem 1.5rem; 
+    font-weight: 600; 
+    border-radius: 0.375rem; 
+    text-decoration: none; 
+    background-color: rgba(157,0,255,0.1); 
+    transition: background 0.2s; 
+  }
+  .btn-outline:hover { background-color: rgba(157,0,255,0.3); }
+
+  /* DIAGNÓSTICO INTERACTIVO COCHE */
+  .card-diag { background-color: var(--card); border: 1px solid rgba(157,0,255,0.3); border-radius: 0.5rem; padding: 1.5rem; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+  .card-title { font-size: 1.5rem; font-weight: 800; color: var(--green); }
+  .card-subtitle { margin-top: 0.25rem; font-size: 0.875rem; color: var(--text-muted); }
+  .flex-wrap-gap { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+  
+  /* CHIPS INTERACTIVOS NATIVOS */
+  .chip-btn {
+    border: 1px solid rgba(157,0,255,0.4); 
+    background-color: rgba(22,22,31,0.8); 
+    color: var(--white); 
+    padding: 0.4rem 0.75rem; 
+    font-size: 0.75rem; 
+    font-weight: 600; 
+    border-radius: 9999px; 
+    cursor: pointer; 
+    transition: all 0.2s;
+  }
+  .chip-btn:hover { border-color: var(--green); background-color: rgba(59,255,20,0.05); }
+  .chip-btn.active { border-color: var(--green); background-color: var(--green); color: #000000; font-weight: 700; box-shadow: 0 0 10px rgba(57,255,20,0.3); }
+  
+  .resultado-box { margin-top: 1.25rem; border-top: 1px solid var(--mist); padding-top: 1rem; min-height: 10rem; }
+  .badge-rec { display: inline-block; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.5rem; background-color: rgba(157,0,255,0.2); border: 1px solid rgba(157,0,255,0.4); color: #D699FF; border-radius: 0.25rem; margin-top: 0.75rem; }
+</style>
+</head>
+<body class="pads">
+<style>
+  /* ESTILOS ADICIONALES PARA SECCIONES SECUNDARIAS NATIVAS */
+  .servicios-seccion { max-width: 1152px; margin: 4rem auto; padding: 0 1.25rem; scroll-margin-top: 1rem; }
+  .servicios-header { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1.5rem; }
+  .lista-servicios { list-style: none; margin-top: 2rem; border-top: 1px solid var(--mist); border-bottom: 1px solid var(--mist); }
+  .servicio-item { display: grid; gap: 0.75rem; padding: 1.25rem 0; border-bottom: 1px solid var(--mist); }
+  @media (min-width: 640px) { .servicio-item { grid-template-cols: 1fr auto; align-items: center; } }
+  .badge-cat { font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.5rem; background-color: rgba(157,0,255,0.1); border: 1px solid rgba(157,0,255,0.2); color: #C470FF; border-radius: 0.25rem; display: inline-block; margin-right: 0.5rem; }
+  .btn-pedir { display: inline-block; border: 1px solid var(--green); color: var(--green); font-weight: 700; font-size: 0.75rem; padding: 0.5rem 1rem; border-radius: 0.375rem; text-decoration: none; transition: all 0.2s; text-align: center; }
+  .btn-pedir:hover { background-color: var(--green); color: #000000; box-shadow: 0 0 10px rgba(57,255,20,0.3); }
+  
+  .domicilio-seccion { background-color: var(--card); border-top: 1px solid rgba(157,0,255,0.1); border-bottom: 1px solid rgba(157,0,255,0.1); padding: 4rem 0; scroll-margin-top: 1rem; }
+  .domicilio-grid { max-width: 1152px; margin: 0 auto; padding: 0 1.25rem; display: grid; gap: 2.5rem; }
+  @media (min-width: 768px) { .domicilio-grid { grid-template-cols: 1fr 1fr; align-items: center; } }
+  .border-destaque { border-left: 6px solid var(--green); padding-left: 1.5rem; }
+  .lista-checks { list-style: none; display: flex; flex-direction: column; gap: 1.25rem; font-size: 1.125rem; color: var(--text-muted); }
+  .check-item { display: flex; gap: 0.75rem; }
+  .dot-green { margin-top: 0.4rem; height: 0.625rem; width: 0.625rem; flex-shrink: 0; border-radius: 50%; background-color: var(--green); box-shadow: 0 0 8px var(--green); }
+  
+  .proceso-seccion { max-width: 1152px; margin: 4rem auto; padding: 0 1.25rem; scroll-margin-top: 1rem; }
+  .proceso-grid { display: grid; gap: 2rem; margin-top: 2.5rem; list-style: none; }
+  @media (min-width: 640px) { .proceso-grid { grid-template-cols: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .proceso-grid { grid-template-cols: repeat(4, 1fr); } }
+  .proceso-item { border-top: 4px solid var(--violet); padding-top: 1rem; }
+  .num-step { font-size: 1.875rem; font-weight: 800; color: var(--green); }
+  
+  .preguntas-seccion { background-color: var(--card); border-top: 1px solid rgba(157,0,255,0.1); padding: 4rem 0; scroll-margin-top: 1rem; }
+  .preguntas-box { max-width: 768px; margin: 0 auto; padding: 0 1.25rem; }
+  .accordion-item { border-bottom: 1px solid var(--mist); padding: 1rem 0; }
+  .accordion-summary { display: flex; cursor: pointer; justify-content: space-between; gap: 1rem; font-weight: 600; font-size: 1.125rem; transition: color 0.2s; list-style: none; }
+  .accordion-summary::-webkit-details-marker { display: none; }
+  .accordion-summary:hover { color: var(--green); }
+  .plus { font-size: 1.5rem; color: var(--violet); transition: transform 0.2s; display: inline-block; line-height: 1; }
+  details[open] .plus { transform: rotate(45deg); }
+  .accordion-content { margin-top: 0.75rem; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+</style>
+
+<div class="max-w-6xl">
+  <header>
+    <a href="#" aria-label="GigaFix, inicio" style="display: flex; align-items: center;">
+      <img src="logo.png" alt="GigaFix - PC Repair, Cyber Tuning" class="logo-img">
+    </a>
+    <nav aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#domicilio">A domicilio</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#preguntas">Preguntas</a>
+    </nav>
+    <a href="https://wa.me." target="_blank" class="btn-violet">WhatsApp</a>
+  </header>
+
+  <div class="hero-grid">
+    <div>
+      <h1 class="hero-title">Tu PC o notebook, <span class="text-green">al máximo rendimiento.</span></h1>
+      <p class="hero-desc">Reparación, mantenimiento de hardware y <span style="color: var(--white); font-weight: 600;">Cyber Tuning</span> avanzado para setups gamers, computadoras de diseño y portátiles. Todo a domicilio.</p>
+      <div class="hero-buttons">
+        <a href="https://wa.me." target="_blank" class="btn-green">Pedir visita a domicilio</a>
+        <a class="btn-outline" href="#servicios">Ver servicios</a>
+      </div>
+    </div>
+
+    <div class="card-diag">
+      <h2 class="card-title">¿Qué le pasa a tu equipo?</h2>
+      <p class="card-subtitle">Seleccioná el síntoma para ver qué puede estar fallando.</p>
+      <div id="sintomas" class="flex-wrap-gap" role="group" aria-label="Síntomas"></div>
+      <div id="resultado" class="resultado-box" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+
+<main>
+<!-- SERVICIOS -->
+<section id="servicios" class="servicios-seccion">
+  <div class="servicios-header">
+    <div>
+      <h2 style="font-size: 2rem;">Servicios de <span class="text-green">Hardware & Soft</span></h2>
+      <p class="text-muted" style="font-size: 1rem;">Elegí una categoría. Tocá “Pedir” para encargar el servicio directo a tu WhatsApp.</p>
+    </div>
+    <div id="filtros" class="flex-wrap-gap" role="group" aria-label="Filtrar servicios"></div>
+  </div>
+  <ul id="lista" class="lista-servicios"></ul>
+</section>
+
+<!-- DOMICILIO -->
+<section id="domicilio" class="domicilio-seccion">
+  <div class="domicilio-grid">
+    <div class="border-destaque">
+      <h2 style="font-size: 2.25rem; line-height: 1.2;">Service técnico a domicilio</h2>
+      <p class="hero-desc">Vamos a tu casa, a tu local o a tu oficina. No hace falta que desconectes ningún componente de tu setup.</p>
+      <a href="https://wa.me." target="_blank" class="btn-violet" style="display: inline-block; margin-top: 1.5rem; padding: 0.75rem 1.5rem;">Coordinar visita</a>
+    </div>
+    <ul class="lista-checks">
+      <li class="check-item"><span class="dot-green" aria-hidden="true"></span><div><span style="color: var(--white); font-weight: 500;">Asistencia transparente:</span> Diagnóstico técnico en vivo frente a vos para tu total tranquilidad.</div></li>
+      <li class="check-item"><span class="dot-green" aria-hidden="true"></span><div><span style="color: var(--white); font-weight: 500;">Resolución rápida:</span> Limpieza profunda, optimizaciones de rendimiento y formateos se hacen en el día.</div></li>
+      <li class="check-item"><span class="dot-green" aria-hidden="true"></span><div><span style="color: var(--white); font-weight: 500;">Presupuesto previo:</span> Te detallamos de antemano el costo del arreglo antes de meter mano.</div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section id="proceso" class="proceso-seccion">
+  <h2 style="font-size: 2rem;">Cómo trabajamos</h2>
+  <ol class="proceso-grid">
+    <li class="proceso-item"><span class="num-step">1</span><h3 style="margin-top: 0.25rem; font-size: 1.125rem;">Contanos el problema</h3><p class="text-muted">Ecribinos un WhatsApp comentando el modelo de tu PC o laptop y qué falla hace.</p></li>
+    <li class="proceso-item"><span class="num-step">2</span><h3 style="margin-top: 0.25rem; font-size: 1.125rem;">Diagnóstico</h3><p class="text-muted">Coordinamos la visita, revisamos el equipo a fondo y encontramos la raíz de la falla.</p></li>
+    <li class="proceso-item"><span class="num-step">3</span><h3 style="margin-top: 0.25rem; font-size: 1.125rem;">Presupuesto</h3><p class="text-muted">Te damos el precio exacto. Si decidís no avanzar, no se cobra la reparación.</p></li>
+    <li class="proceso-item"><span class="num-step">4</span><h3 style="margin-top: 0.25rem; font-size: 1.125rem;">Reparación y Test</h3><p class="text-muted">Dejamos tu setup calibrado, hacemos pruebas de rendimiento y te damos garantía.</p></li>
+  </ol>
+</section>
+
+<!-- PREGUNTAS -->
+<section id="preguntas" class="preguntas-seccion">
+  <div class="preguntas-box">
+    <h2 style="font-size: 2rem; color: var(--green); margin-bottom: 2rem;">Preguntas frecuentes</h2>
+    <div style="border-top: 1px solid var(--mist);">
+      <details class="accordion-item">
+        <summary class="accordion-summary">¿Hacen service a domicilio?<span class="plus" aria-hidden="true">+</span></summary>
+        <p class="accordion-content">Sí, cubrimos visitas programadas a domicilio en Córdoba. Nos decís tu zona por WhatsApp y coordinamos el mejor día y horario para ir a revisar el equipo.</p>
+      </details>
+      <details class="accordion-item">
+        <summary class="accordion-summary">¿Cuánto cuesta una reparación o el Cyber Tuning?<span class="plus" aria-hidden="true">+</span></summary>
+        <p class="accordion-content">El costo varía según la complejidad de la falla y los componentes que se necesiten. De todas formas, hablando por chat y con los síntomas claros, te damos un estimado base antes de visitarte.</p>
+      </details>
+      <details class="accordion-item">
+        <summary class="accordion-summary">¿Pierdo mis archivos o partidas si formatean el equipo?<span class="plus" aria-hidden="true">+</span></summary>
+        <p class="accordion-content">Para nada. Siempre que el disco de almacenamiento responda y permita la lectura, realizamos un backup completo de tus datos, documentos y configuraciones antes de reinstalar Windows.</p>
+      </details>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="bg-cyber-bg border-t border-mist py-8 text-center text-sm text-cyber-textMuted" style="background-color: var(--bg); border-top: 1px solid var(--mist); padding: 2rem 0; text-align: center; font-size: 0.875rem; color: var(--text-muted);">
+  <p>© 2026 <span style="color: var(--violet); font-weight: bold;">Giga</span><span style="color: var(--white); font-weight: bold;">Fix</span>. Soporte Técnico de Alta Complejidad & Cyber Tuning de Computadoras.</p>
+</footer>
+
+<!-- BOTÓN FLOTANTE NATIVO -->
+<a href="https://wa.me." target="_blank" aria-label="Escribir por WhatsApp" style="position: fixed; bottom: 1rem; right: 1rem; z-index: 50; display: flex; align-items: center; gap: 0.5rem; background-color: #25D366; color: #000000; padding: 0.75rem 1rem; font-weight: 600; border-radius: 9999px; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.5); font-family: sans-serif;">
+  <svg viewBox="0 0 24 24" style="height: 1.25rem; width: 1.25rem; fill: currentColor;"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 2a8 8 0 1 1-4.2 14.8l-.3-.2-2.4.6.6-2.3-.2-.3A8 8 0 0 1 12 4Z"/></svg>
+  <span>WhatsApp</span>
+</a>
+
+<!-- MOTOR INTERACTIVO LOCAL (CERO TRAFICO EXTERNO / ULTRA LIGHT) -->
+<script>
+const sintomasData = [
+  { id: 'encendido', boton: 'No enciende / Pantalla negra', titulo: 'La PC no arranca', causa: 'Puede deberse a una falla en la fuente de alimentación, módulos de memoria RAM sucios o con problemas, o estática en la placa madre.', servicio: 'Diagnóstico de Hardware' },
+  { id: 'lenta', boton: 'Va muy lenta / Tirones', titulo: 'Pérdida de rendimiento', causa: 'Falta de optimización del sistema, temperaturas elevadas por falta de mantenimiento, o necesidad de actualizar a un disco de estado sólido (SSD).', servicio: 'Cyber Tuning & Optimización' },
+  { id: 'calienta', boton: 'Se calienta mucho / Ruido', titulo: 'Temperaturas críticas', causa: 'Coolers obstruidos por polvo, pelusas o grasa térmica totalmente reseca que ya no disipa el calor del procesador.', servicio: 'Limpieza Profunda & Mantenimiento' },
+  { id: 'pantallazo', boton: 'Pintó pantalla azul', titulo: 'Errores críticos de Windows', causa: 'Drivers incompatibles, actualizaciones corruptas del sistema operativo o fallas directas en el almacenamiento o la memoria.', servicio: 'Instalación de Windows & Software' }
+];
+
+const serviciosData = [
+  { cat: 'hardware', nombre: 'Limpieza Física Integral & Cambio de Pasta Térmica', desc: 'Limpieza interna, remoción de polvo y pelusas, y aplicación de pasta térmica de alta conductividad para bajar temperaturas de procesadores y placas.' },
+  { cat: 'software', nombre: 'Instalación de Windows Optimizado (10 / 11)', desc: 'Formateo limpio, configuración de drivers estables, parches de seguridad y puesta a punto sin software basura en segundo plano.' },
+  { cat: 'hardware', nombre: 'Ampliación de Almacenamiento (SSD) y Memoria RAM', desc: 'Instalación de componentes rápidos para acelerar el inicio del sistema, la carga de programas pesados y la fluidez multitarea.' },
+  { cat: 'software', nombre: 'Cyber Tuning / Optimización para Gaming & Streaming', desc: 'Ajustes avanzados del sistema, eliminación de lag, optimización de consumo de recursos y calibración para exprimir hasta el último FPS.' },
+  { cat: 'redes', nombre: 'Configuración de Wi-Fi, Routers y Repetidores', desc: 'Mejora de cobertura de internet en tu hogar, cableado de red estable y solución a microcortes durante tus partidas online.' }
+];
+
+const WHATSAPP_NUM = "5493516742972";
+const contSintomas = document.getElementById('sintomas');
+const contResultado = document.getElementById('resultado');
+
+function mostrarSintoma(id) {
+  const item = sintomasData.find(s => s.id === id);
+  document.querySelectorAll('#sintomas button').forEach(b => b.className = "chip-btn");
+  document.getElementById('btn-sintoma-' + id).className = "chip-btn active";
+  
+  contResultado.innerHTML = `
+    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+      <h3 style="font-size: 1.25rem; font-weight: bold; color: var(--green);">${item.titulo}</h3>
+      <p style="text-sm; color: var(--text-muted); font-size: 0.875rem; line-height: 1.5;">${item.causa}</p>
+      <div style="padding-top: 0.75rem; border-top: 1px solid var(--mist); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 0.5rem;">
+        <span class="badge-rec">Recomendado: ${item.servicio}</span>
+        <a href="https://wa.me{WHATSAPP_NUM}?text=Hola%20GigaFix,%20mi%20equipo%20presenta%20el%20síntoma:%20${encodeURIComponent(item.boton)}.%20Quiero%20hacer%20una%20consulta." target="_blank" style="font-size: 0.75rem; background-color: var(--green); color: #000000; padding: 0.5rem 1rem; font-weight: bold; border-radius: 0.25rem; text-decoration: none;">Consultar turno</a>
+      </div>
+    </div>
+  `;
+}
+
+sintomasData.forEach((s, idx) => {
+  const btn = document.createElement('button');
+  btn.type = "button";
+  btn.id = 'btn-sintoma-' + s.id;
+  btn.className = "chip-btn";
+  btn.innerText = s.boton;
+  btn.onclick = () => mostrarSintoma(s.id);
+  contSintomas.appendChild(btn);
+  if(idx === 0) mostrarSintoma(s.id);
+});
+
+const contFiltros = document.getElementById('filtros');
+const contLista = document.getElementById('lista');
+const categoriasData = [{ id: 'todos', txt: '⚡ Todos' }, { id: 'hardware', txt: '🔧 Hardware' }, { id: 'software', txt: '💿 Software' }, { id: 'redes', txt: '🌐 Conectividad' }];
+
+function renderServicios(catId) {
+  contLista.innerHTML = '';
+  const filtrados = catId === 'todos' ? serviciosData : serviciosData.filter(s => s.cat === catId);
+  
+  filtrados.forEach(s => {
+    const li = document.createElement('li');
+    li.className = "servicio-item";
+    li.innerHTML = `
+      <div style="max-width: 36rem;">
+        <h4 style="font-weight: bold; font-size: 1.125rem; color: var(--white);">${s.nombre}</h4>
+        <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.25rem;">${s.desc}</p>
+      </div>
+      <a href="https://wa.me{WHATSAPP_NUM}?text=Hola%20GigaFix,%20estoy%20interesado%20en%20el%20servicio:%20${encodeURIComponent(s.nombre)}." target="_blank" class="btn-pedir">Pedir Servicio</a>
+    `;
+    contLista.appendChild(li);
+  });
+}
+
+categoriasData.forEach((c, idx) => {
+  const btn = document.createElement('button');
+  btn.type = "button";
+  btn.id = 'btn-cat-' + c.id;
+  btn.style.cssText = "border: 1px solid var(--mist); background-color: var(--card); color: var(--text-muted); padding: 0.5rem 1rem; font-size: 0.75rem; font-weight: 600; border-radius: 0.375rem; cursor: pointer; transition: all 0.2s;";
+  btn.innerText = c.txt;
+  
+  if (idx === 0) {
+    btn.style.borderColor = "var(--green)";
+    btn.style.backgroundColor = "rgba(57,255,20,0.1)";
+    btn.style.color = "var(--green)";
+  }
+  
+  btn.onclick = () => {
+    document.querySelectorAll('#filtros button').forEach(b => {
+      b.style.borderColor = "var(--mist)";
+      b.style.backgroundColor = "var(--card)";
+      b.style.color = "var(--text-muted)";
+    });
+    btn.style.borderColor = "var(--green)";
+    btn.style.backgroundColor = "rgba(57,255,20,0.1)";
+    btn.style.color = "var(--green)";
+    renderServicios(c.id);
+  };
+  contFiltros.appendChild(btn);
+});
+
+renderServicios('todos');
+</script>
+</body>
+</html>
